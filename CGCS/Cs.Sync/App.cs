@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cs.Sync
 {
-    class Main
+    class App
     {
         static void Main(string[] args)
         {
