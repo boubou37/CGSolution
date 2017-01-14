@@ -1,25 +1,23 @@
-﻿using System;
-using System.Linq;
+using System;
+using System.Resources;
 using System.IO;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
-/**
- * Auto-generated code below aims at helping you parse
- * the standard input according to the problem statement.
- **/
-class Solution
+public class Anagram
 {
     static void Main(string[] args)
     {
-        string phrase = Console.ReadLine();
+        string phrase = "UK IFWK ONGN U";
         phrase = UnscrambleStep4(phrase);
+        Console.WriteLine(phrase);
         for (int i = 4; i >= 2; i--)
         {
             phrase = UnscrambleShift(phrase, i);
+            Console.WriteLine(phrase);
         }
-        Console.WriteLine(phrase);
     }
 
     static string UnscrambleStep4(string sentence)
@@ -84,4 +82,5 @@ class Solution
         }
         return new string(ret);
     }
+
 }
