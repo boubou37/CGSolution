@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cs.Test
+namespace Cs.Dev
 {
-    class Test
+    class Program
     {
         static void Main(string[] args)
         {
