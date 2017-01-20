@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tests
+namespace Cs.DevTests.Community
 {
     [TestClass()]
     public class AnagramTests : CGTests
