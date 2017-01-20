@@ -61,7 +61,7 @@ namespace Cs.DevTests {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à &quot;C:\\Users\\lrhmf\\Source\\Repos\\CGSolution\\TestResources&quot;.
+        ///   Recherche une chaîne localisée semblable à C:\Users\lrhmf\Source\Repos\CGSolution\TestResources\.
         /// </summary>
         internal static string resFolder {
             get {

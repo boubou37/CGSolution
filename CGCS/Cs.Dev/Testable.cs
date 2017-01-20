@@ -16,7 +16,21 @@ namespace Cs.Dev
         }
         private StreamReader sr;
         private string puzCategory;
+        public string PuzCategory
+        {
+            get
+            {
+                return this.puzCategory;
+            }
+        }
         private string puzName;
+        public string PuzName
+        {
+            get
+            {
+                return this.puzName;
+            }
+        }
 
     }
 }

@@ -5,22 +5,27 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cs.Dev;
 
-public class Anagram
+public class Anagram : Testable
 {
-    static void Main(string[] args)
+    public Anagram(string cat, string name) : base(cat, name)
     {
-        string phrase = "UK IFWK ONGN U";
-        phrase = UnscrambleStep4(phrase);
+    }
+
+    public string Decypher(string phrase)
+    {
+        string ret = UnscrambleStep4(phrase);
         Console.WriteLine(phrase);
         for (int i = 4; i >= 2; i--)
         {
-            phrase = UnscrambleShift(phrase, i);
+            ret = UnscrambleShift(ret, i);
             Console.WriteLine(phrase);
         }
+        return ret;
     }
 
-    static string UnscrambleStep4(string sentence)
+    public string UnscrambleStep4(string sentence)
     {
         string[] toks = sentence.Split(' ');
         string cpy = sentence.Replace(" ", string.Empty);
@@ -39,7 +44,7 @@ public class Anagram
         return cpy;
     }
 
-    static string UnscrambleShift(string sentence, int mod)
+    public string UnscrambleShift(string sentence, int mod)
     {
         List<Char> chars = new List<Char>();
         char[] ret = sentence.ToCharArray();

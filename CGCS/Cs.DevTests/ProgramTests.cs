@@ -6,15 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cs.Dev.Tests
+namespace Tests
 {
     [TestClass()]
-    public class ProgramTests
+    public class CGTests
     {
-        [TestMethod()]
-        public void MainTest()
-        {
-            Assert.Fail();
-        }
+        protected readonly string fold = Cs.DevTests.TestResources.resFolder;
+
     }
 }
