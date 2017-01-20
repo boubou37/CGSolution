@@ -47,31 +47,28 @@ namespace Cs.Dev.Normal
             while (p2.Count<String>() > 0 && p1.Count<String>() > 0)
             {
                 count++;
-                card1 = p1.Dequeue();
-                card2 = p2.Dequeue();
+                card1 = p1.Peek();
+                card2 = p2.Peek();
                 gr = Cmp(card1, card2);
                 if (gr < 0)
                 {
-                    p2.Enqueue(card1); p2.Enqueue(card2);
+                    p2.Enqueue(p1.Dequeue()); p2.Enqueue(p2.Dequeue());
                 }
                 else if (gr > 0)
                 {
-                    p1.Enqueue(card1); p1.Enqueue(card2);
+                    p1.Enqueue(p1.Dequeue()); p1.Enqueue(p2.Dequeue());
                 }
                 else
                 {
                     while (gr == 0)
                     {
-                        warP1.Enqueue(card1);
-                        warP2.Enqueue(card2);
-                        for (int i = 0; i < 3; i++)
+                        for (int i = 0; i < 4; i++)
                         {
                             warP1.Enqueue(p1.Dequeue());
                             warP2.Enqueue(p2.Dequeue());
                             if (p2.Count<String>() == 0 || p1.Count<String>() == 0)
                             {
-                                Console.WriteLine("PAT");
-                                Environment.Exit(0);
+                                return "PAT";
                             }
                         }
                         card1 = p1.Peek(); card2 = p2.Peek();
@@ -79,27 +76,34 @@ namespace Cs.Dev.Normal
                     }
                     if (gr < 0)
                     {
-                        p2.Concat(warP1);
-                        p2.Concat(warP2);
-                        p2.Enqueue(card1); p2.Enqueue(card2);
-                        warP1.Clear();
-                        warP2.Clear();
+                        transfer(warP1, ref p2);
+                        p2.Enqueue(p1.Dequeue());
+                        transfer(warP2, ref p2);
+                        p2.Enqueue(p2.Dequeue());
                     }
                     else if (gr > 0)
                     {
-                        p1.Concat(warP1);
-                        p1.Concat(warP2);
-                        p1.Enqueue(card1); p1.Enqueue(card2);
+                        transfer(warP1, ref p1);
+                        p1.Enqueue(p1.Dequeue());
+                        transfer(warP2, ref p1);
+                        p1.Enqueue(p2.Dequeue());
+                    }
                         warP1.Clear();
                         warP2.Clear();
-                    }
-
 
                 }
             }
             int winner = p1.Count() > 0 ? 1 : 2;
-            Console.WriteLine(winner + " " + count);
-            return "BITE";
+            string ret = winner + " " + count;
+            return ret;
+        }
+
+        public void transfer(Queue<string> from, ref Queue<string> to)
+        {
+            while (from.Count() > 0)
+            {
+                to.Enqueue(from.Dequeue());
+            }
         }
     }
 

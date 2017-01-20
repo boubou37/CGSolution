@@ -38,22 +38,22 @@ class Solution
         while (p2.Count<String>() > 0 && p1.Count<String>() > 0)
         {
             count++;
-            card1 = p1.Dequeue();
-            card2 = p2.Dequeue();
-            gr = cmp(card1, card2);
+            card1 = p1.Peek();
+            card2 = p2.Peek();
+            gr = Cmp(card1, card2);
             if (gr < 0)
             {
-                p2.Enqueue(card1); p2.Enqueue(card2);
+                p2.Enqueue(p1.Dequeue()); p2.Enqueue(p2.Dequeue());
             }
             else if (gr > 0)
             {
-                p1.Enqueue(card1); p1.Enqueue(card2);
+                p1.Enqueue(p1.Dequeue()); p1.Enqueue(p2.Dequeue());
             }
             else
             {
                 while (gr == 0)
                 {
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < 4; i++)
                     {
                         warP1.Enqueue(p1.Dequeue());
                         warP2.Enqueue(p2.Dequeue());
@@ -64,25 +64,24 @@ class Solution
                         }
                     }
                     card1 = p1.Peek(); card2 = p2.Peek();
-                    gr = cmp(card1, card2);
+                    gr = Cmp(card1, card2);
                 }
                 if (gr < 0)
                 {
-                    p2.Concat(warP1);
-                    p2.Concat(warP2);
-                    p2.Enqueue(card1); p2.Enqueue(card2);
-                    warP1.Clear();
-                    warP2.Clear();
+                    transfer(warP1, ref p2);
+                    p2.Enqueue(p1.Dequeue());
+                    transfer(warP2, ref p2);
+                    p2.Enqueue(p2.Dequeue());
                 }
                 else if (gr > 0)
                 {
-                    p1.Concat(warP1);
-                    p1.Concat(warP2);
-                    p1.Enqueue(card1); p1.Enqueue(card2);
-                    warP1.Clear();
-                    warP2.Clear();
+                    transfer(warP1, ref p1);
+                    p1.Enqueue(p1.Dequeue());
+                    transfer(warP2, ref p1);
+                    p1.Enqueue(p2.Dequeue());
                 }
-
+                warP1.Clear();
+                warP2.Clear();
 
             }
         }
@@ -90,9 +89,17 @@ class Solution
         Console.WriteLine(winner + " " + count);
     }
 
-    static int cmp(string card1, string card2)
+    static int Cmp(string card1, string card2)
     {
         int ret = vals.IndexOf(card1[0]) - vals.IndexOf(card2[0]);
         return ret;
+    }
+
+    static void transfer(Queue<string> from, ref Queue<string> to)
+    {
+        while (from.Count() > 0)
+        {
+            to.Enqueue(from.Dequeue());
+        }
     }
 }
