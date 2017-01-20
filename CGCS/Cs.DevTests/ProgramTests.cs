@@ -11,7 +11,7 @@ namespace Cs.DevTests
     [TestClass()]
     public class CGTests
     {
-        protected readonly string fold = Cs.DevTests.TestResources.resFolder;
+       static protected readonly string fold = Cs.DevTests.TestResources.resFolder;
 
     }
 }

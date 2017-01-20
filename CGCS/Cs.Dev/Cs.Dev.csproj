@@ -61,6 +61,7 @@
     <Compile Include="Community\Anagram.cs" />
     <Compile Include="Community\Spyer.cs" />
     <Compile Include="Easy\Temperatures.cs" />
+    <Compile Include="Normal\War.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,7 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Hard\" />
-    <Folder Include="Normal\" />
     <Folder Include="VeryHard\" />
   </ItemGroup>
   <ItemGroup>

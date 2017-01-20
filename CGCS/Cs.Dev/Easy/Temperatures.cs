@@ -13,7 +13,7 @@ namespace Cs.Dev.Easy
         {
         }
 
-        public int getMinTemp(StreamReader sr)
+        public int GetMinTemp(StreamReader sr)
         {
             int n = int.Parse(sr.ReadLine()); // the number of temperatures to analyse
             string temps = sr.ReadLine(); // the n temperatures expressed as integers ranging from -273 to 5526
