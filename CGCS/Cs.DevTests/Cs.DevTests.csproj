@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Community\AnagramTests.cs" />
     <Compile Include="Easy\TemperaturesTest.cs" />
+    <Compile Include="Normal\ScrabbleTests.cs" />
     <Compile Include="Normal\WarTests.cs" />
     <Compile Include="ProgramTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

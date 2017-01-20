@@ -10,6 +10,16 @@ namespace Cs.Solved
     {
         static void Main(string[] args)
         {
+            Dictionary<string, int> te = new Dictionary<string, int>()
+            {
+                {"couu",25 },
+                {"beee",13 },
+                {"aaaaa",25 }
+            };
+            var v = "which";
+            var y = "hicquwh";
+            var z = v.Distinct();
+            Console.WriteLine(string.Join("",v.Distinct()));
         }
     }
 }

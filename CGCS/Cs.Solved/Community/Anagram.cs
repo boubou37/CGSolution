@@ -11,7 +11,7 @@ using System.Collections.Generic;
  **/
 class Solution
 {
-    static void Main(string[] args)
+    static void solv(string[] args)
     {
         string phrase = Console.ReadLine();
         phrase = UnscrambleStep4(phrase);
