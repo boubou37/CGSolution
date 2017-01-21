@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Community\Anagram.cs" />
+    <Compile Include="Easy\Descent.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,7 +52,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Easy\" />
     <Folder Include="Hard\" />
     <Folder Include="Normal\" />
     <Folder Include="VeryHard\" />

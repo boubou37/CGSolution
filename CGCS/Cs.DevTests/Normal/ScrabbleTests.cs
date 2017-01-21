@@ -37,7 +37,6 @@ namespace Cs.DevTests
         }
 
 
-
         [TestMethod()]
         public void TestScrabble0()
         {

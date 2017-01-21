@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Community\AnagramTests.cs" />
     <Compile Include="Easy\TemperaturesTest.cs" />
+    <Compile Include="Hard\Bender2Tests.cs" />
     <Compile Include="Normal\ScrabbleTests.cs" />
     <Compile Include="Normal\WarTests.cs" />
     <Compile Include="ProgramTests.cs" />
@@ -72,7 +73,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Hard\" />
     <Folder Include="VeryHard\" />
   </ItemGroup>
   <ItemGroup>

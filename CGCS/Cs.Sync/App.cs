@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.IO;
 using System.Text;
@@ -11,25 +11,57 @@ using System.Collections.Generic;
  **/
 class Solution
 {
-    static int[] vals = { 1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10 };
+    static Dictionary<Node, int> cache = new Dictionary<Node, int>();
     static void Main(string[] args)
     {
-        string ret = "";
-        Dictionary<string, int> wordVal = new Dictionary<string, int>();
         int N = int.Parse(Console.ReadLine());
+        var nodes = Enumerable.Range(0, N).Select((x, y) => new Node(y, 0)).ToList();
+        Node exit = new Node(-1, 0);
+        string[] line;
         for (int i = 0; i < N; i++)
         {
-            string W = Console.ReadLine();
-            wordVal.Add(W, W.Select(x => vals[x - 'a']).Sum());
+            string room = Console.ReadLine();
+            line = room.Split(' ');
+            nodes[i].Weight = int.Parse(line[1]);
+            nodes[i].AddChild(line[2] == "E" ? exit : nodes[int.Parse(line[2])]);
+            nodes[i].AddChild(line[3] == "E" ? exit : nodes[int.Parse(line[3])]);
         }
-        string LETTERS = Console.ReadLine();
-        ret = wordVal.Where(x => Compatible(LETTERS, x.Key)).OrderByDescending(x => x.Value).First().Key;
-        Console.WriteLine(ret);
+        int res = findMax(nodes[0]);
+        Console.WriteLine(res);
     }
 
-    static bool Compatible(string dict, string word)
+    static int findMax(Node node)
     {
-        bool ret = word.All(x => dict.Count(y => y == x) >= word.Count(y => y == x));
-        return ret;
+        if (node.Id < 0) return 0;
+        int res = 0;
+        int cached = 0;
+        foreach (Node n in node.Children)
+        {
+            if (!cache.TryGetValue(node, out cached))
+                res = Math.Max(res, node.Weight + findMax(n));
+            else
+                res = Math.Max(res, cached);
+        }
+        cache[node] = res;
+        return res;
+    }
+}
+
+class Node
+{
+    public int Weight { get; set; }
+    public int Id { get; set; }
+    public List<Node> Children { get; set; }
+
+    public Node(int Id, int Weight)
+    {
+        this.Id = Id;
+        this.Weight = Weight;
+        this.Children = new List<Node>();
+    }
+
+    public void AddChild(Node n)
+    {
+        this.Children.Add(n);
     }
 }
