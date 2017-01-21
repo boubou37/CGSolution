@@ -62,6 +62,7 @@
     <Compile Include="Community\Spyer.cs" />
     <Compile Include="Easy\Temperatures.cs" />
     <Compile Include="Hard\Bender2.cs" />
+    <Compile Include="Hard\Bender3.cs" />
     <Compile Include="Normal\Scrabble.cs" />
     <Compile Include="Normal\War.cs" />
     <Compile Include="Resource1.Designer.cs">
