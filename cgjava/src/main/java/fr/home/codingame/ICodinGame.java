@@ -7,5 +7,5 @@ import java.util.Scanner;
  */
 public interface ICodinGame<T> {
 
-    T solve(Scanner scanner);
+    T solve(Scanner in);
 }
