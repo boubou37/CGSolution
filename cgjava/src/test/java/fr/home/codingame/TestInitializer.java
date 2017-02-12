@@ -26,8 +26,8 @@ public class TestInitializer {
             return null;
         }
         for (File testcase : f.listFiles()) {
-            Scanner s = new Scanner(testcase);
-            ret.add(s);
+                Scanner s = new Scanner(testcase);
+                ret.add(s);
         }
         return ret;
     }
