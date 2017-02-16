@@ -21,16 +21,16 @@ public class MinimumSwap implements ICodinGame<Integer> {
             int x = in.nextInt();
             l.add(x);
         }
+        if (!l.contains(0)) return 0;
         do {
             firstZero = l.indexOf(0);
             lastOne = l.lastIndexOf(1);
-            if (firstZero < lastOne && firstZero >= 0) {
+            if (firstZero < lastOne ) {
                 l.set(firstZero, 1);
                 l.set(lastOne, 0);
                 count++;
             }
-        }  while (l.indexOf(0) < l.lastIndexOf(1) && l.indexOf(0) >= 0);
-        printList(l);
+        }  while (l.indexOf(0) < l.lastIndexOf(1));
         return count;
     }
 

@@ -9,20 +9,29 @@ import java.math.*;
 class Solution {
 
     public static void main(String args[]) {
-        int a = 1;
-        int b = a ^1;
-        System.out.println(b);
-
-    }
-
-    public static boolean setAdd(Set<Integer> set, int val) {
-        if (set.add(val)) {
-            return true;
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        List<Integer> l = new ArrayList<Integer>();
+        int firstZero, lastOne;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            int x = in.nextInt();
+            l.add(x);
         }
-        else {
-            set.remove(val);
-            return setAdd(set,val+1);
-        }
-    }
+        if (!l.contains(0)) count = 0;
+        else
+        do {
+            firstZero = l.indexOf(0);
+            lastOne = l.lastIndexOf(1);
+            if (firstZero < lastOne ) {
+                l.set(firstZero, 1);
+                l.set(lastOne, 0);
+                count++;
+            }
+        }  while (l.indexOf(0) < l.lastIndexOf(1));
+        // Write an action using System.out.println()
+        // To debug: System.err.println("Debug messages...");
 
+        System.out.println(count);
+    }
 }
